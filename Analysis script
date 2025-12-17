@@ -3,9 +3,10 @@
 # Directory containing FASTQ files
 FASTQ_DIR=""
 
-# File containing motifs/probes - for KRAS or BRAF
+# File containing motifs/barcodes - for polyT, KRAS or BRAF
 MOTIF_FILE= "Motifs_Probe_KRAS.fa"
 MOTIF_FILE= "Motifs_Probe_BRAF.fa"
+MOTIF_FILE= "Barcodes.fa"
 
 # Extract unique probe names from the motif file
 ALL_PROBES=$(grep "^>" "$MOTIF_FILE" | sed 's/>//')
@@ -35,9 +36,10 @@ for probe in \$ALL_PROBES; do
     PROBE_COUNTS[\$probe]=0
 done
 
-# Update counts based on locate output, considering only matches at positions 1 to 17
+# Update counts based on locate output, considering only matches at positions 1 to 8 for barcodes and 1 to 17 for probe motifs
 while IFS=\$'\t' read -r seqID patternName pattern strand start end matched; do
-    if [[ "\$start" -eq 1 && "\$end" -eq 17 ]]; then
+    if [[ "\$start" -eq 1 && "\$end" -eq 8 ]]; then # use what is applicable
+    if [[ "\$start" -eq 1 && "\$end" -eq 17 ]]; then # use what is applicable
         ((PROBE_COUNTS[\$patternName]++))
     fi
 done < <(tail -n +2 "\$LOCATE_OUTPUT_FILE")
