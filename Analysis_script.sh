@@ -1,9 +1,11 @@
 #!/bin/bash
 
 # Directory containing FASTQ files
+# Add example
 FASTQ_DIR=""
 
 # File containing motifs/barcodes - for polyT, KRAS or BRAF
+# example/input/motif_probe_KRAS.fa
 MOTIF_FILE= "Motifs_Probe_KRAS.fa"
 MOTIF_FILE= "Motifs_Probe_BRAF.fa"
 MOTIF_FILE= "Barcodes.fa"
@@ -12,6 +14,7 @@ MOTIF_FILE= "Barcodes.fa"
 ALL_PROBES=$(grep "^>" "$MOTIF_FILE" | sed 's/>//')
 
 # Submit a separate job for each FASTQ file
+# For use on HPC environment
 for FASTQ_FILE in "$FASTQ_DIR"/*.fastq.gz; do
     # Extract base name for job naming
     BASE_NAME=$(basename "$FASTQ_FILE" .fastq.gz)
