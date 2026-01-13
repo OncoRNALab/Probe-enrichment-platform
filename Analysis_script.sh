@@ -3,6 +3,7 @@
 # Directory containing FASTQ files
 # Add example
 FASTQ_DIR=""
+OUTPUT_DIR="output/"
 
 # File containing motifs/barcodes - for polyT, KRAS or BRAF
 # example/input/motif_probe_KRAS.fa
@@ -23,9 +24,10 @@ for FASTQ_FILE in "$FASTQ_DIR"/*.fastq.gz; do
     sbatch <<EOF
 #!/bin/bash
 
+
 # Process the current FASTQ file
-LOCATE_OUTPUT_FILE="${BASE_NAME}_locate.txt"
-COUNT_OUTPUT_FILE="${BASE_NAME}_counts.txt"
+LOCATE_OUTPUT_FILE="${OUTPUT_DIR}${BASE_NAME}_locate.txt"
+COUNT_OUTPUT_FILE="${OUTPUT_DIR}${BASE_NAME}_counts.txt"
 
 # Run seqkit locate
 zcat "$FASTQ_FILE" | seqkit locate -i -d -f "$MOTIF_FILE" > "\$LOCATE_OUTPUT_FILE"
