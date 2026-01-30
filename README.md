@@ -1,15 +1,13 @@
 # Probe Enrichment Platform Analysis
 
-This repository contains the processing pipeline for DNA probe libraries enriched by hybridizing against a specific target. The workflow begins with raw FASTQ files and utilizes a mapping strategy, where the probe motifs are count. 
-
+This repository contains the processing pipeline for DNA probe libraries enriched via hybridization against specific genomic targets. By starting directly from raw FASTQ files, the workflow quantifies the experimental "pulldown" through a motif-based mapping strategy. Instead of traditional alignment to a reference genome, this platform identifies and counts specific probe motifs within the sequencing reads using SeqKit v2.10.0.
 
 ## Getting Started
 
 ### Prerequisites
 The following tools are required for the analysis:
 * **SeqKit (v2.10.0):** For motif mapping and target identification.
-* **FastQC (v0.11.9):** For quality control assessment.
-* **Python/R:** (Insert versions used) for downstream statistical analysis.
+* **R:** (Insert versions used) for downstream statistical analysis.
 
 ### Data Preparation
 The pipeline expects paired-end FASTQ files generated from an Illumina NextSeq 2000 (P1 kit). 
@@ -33,5 +31,5 @@ Probe motifs for *KRAS* and *BRAF* (referenced in Annex 2 and 3) are mapped dire
 `seqkit locate --pattern-file motifs.fa sample_R1.fastq.gz`
 
 ### 3. PolyT Barcode Mapping
-Unique barcode motifs are utilized for mapping to circumvent polyT non-homogeneity:
+Unique barcode motifs are utilized for mapping to circumvent polyT (referenced in Annex 4 non-homogeneity:
 `seqkit locate --pattern-file barcodes.fa sample_R1.fastq.gz`
