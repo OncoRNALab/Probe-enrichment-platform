@@ -2,6 +2,8 @@
 
 This repository contains the processing pipeline for DNA probe libraries enriched via hybridization against specific genomic targets. By starting directly from raw FASTQ files, the workflow quantifies the experimental "pulldown" through a motif-based mapping strategy. Instead of traditional alignment to a reference genome, this platform identifies and counts specific probe motifs within the sequencing reads using SeqKit v2.10.0.
 
+A script example is available in Example/
+
 ## Getting Started
 
 ### Prerequisites
