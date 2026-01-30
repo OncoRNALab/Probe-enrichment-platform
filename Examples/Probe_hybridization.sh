@@ -1,6 +1,88 @@
 #!/bin/bash
 
 # Directory containing FASTQ files
+FASTQ_DIR="/Input/"
+OUTPUT_DIR="/Output/"
+
+# File containing motifs/probes
+MOTIF_FILE="Annex_02_Motifs_Probe_01_884_KRAS.fa"
+
+# Extract unique probe names from the motif file
+ALL_PROBES=$(grep "^>" "$MOTIF_FILE" | sed 's/>//')
+
+# Submit a separate job for each FASTQ file
+for FASTQ_FILE in "$FASTQ_DIR"/*.fastq.gz; do
+    # Extract base name for job naming
+    BASE_NAME=$(basename "$FASTQ_FILE" .fastq.gz)
+
+    # Create a job script for each FASTQ file
+    sbatch <<EOF
+#!/bin/bash
+# Process the current FASTQ file
+LOCATE_OUTPUT_FILE="${BASE_NAME}_locate.txt"
+COUNT_OUTPUT_FILE="${BASE_NAME}_counts.txt"
+
+# Run seqkit locate
+zcat "$FASTQ_FILE" | seqkit locate -i -d -f "$MOTIF_FILE" > "\$LOCATE_OUTPUT_FILE"
+
+# Create an associative array to store counts for each probe
+declare -A PROBE_COUNTS
+
+# Initialize counts for all probes to zero
+ALL_PROBES=\$(grep "^>" "$MOTIF_FILE" | sed 's/>//')
+for probe in \$ALL_PROBES; do
+    PROBE_COUNTS[\$probe]=0
+done
+
+# Update counts based on locate output, considering only matches at positions 1 to 17
+while IFS=\$'\t' read -r seqID patternName pattern strand start end matched; do
+    if [[ "\$start" -eq 1 && "\$end" -eq 17 ]]; then
+        ((PROBE_COUNTS[\$patternName]++))
+    fi
+done < <(tail -n +2 "\$LOCATE_OUTPUT_FILE")
+
+# Write the counts to the output file
+> "\$COUNT_OUTPUT_FILE"
+for probe in \$ALL_PROBES; do
+    echo -e "\$probe\t\${PROBE_COUNTS[\$probe]}" >> "\$COUNT_OUTPUT_FILE"
+done
+
+echo "Processed $FASTQ_FILE, saved locate results to \$LOCATE_OUTPUT_FILE and counts to \$COUNT_OUTPUT_FILE"
+EOF
+done
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#!/bin/bash
+
+# Directory containing FASTQ files
 # Add example
 FASTQ_DIR=""
 OUTPUT_DIR="output/"
