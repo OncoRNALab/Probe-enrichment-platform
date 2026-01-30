@@ -37,14 +37,14 @@ Assess read quality using FastQC:
 `fastqc *.fastq.gz -o ./qc_reports/`
 
 ### 2. Target Identification
-Probe motifs for *KRAS* and *BRAF* (referenced in Annex 2 and 3) are mapped directly using `SeqKit`:
+Probe motifs for *KRAS* and *BRAF* (referenced in Input/Annex 2 and 3) are mapped directly using `SeqKit`:
 `seqkit locate --pattern-file motifs.fa sample_R1.fastq.gz`
 
-Unique barcode motifs are utilized for mapping to circumvent polyT (referenced in Annex 4) non-homogeneity:
+Unique barcode motifs are utilized for mapping to circumvent polyT (referenced in Input/Annex 4) non-homogeneity:
 `seqkit locate --pattern-file barcodes.fa sample_R1.fastq.gz`
 
 ### 3. Intermediate output
-A locate file that contains to location of the motifs in the reads
+A locate file (referenced in Output) that contains the location of the probe motifs or barcodes in the reads
 
 | seqID | patternName | pattern | strand | start | end | matched |
 | :--- | :--- | :--- | :---: | :---: | :---: | :--- |
@@ -64,6 +64,8 @@ PolyT Barcodes: Only matches within the 1 to 7 range are counted.
 | Probe_ID | Count |
 | :--- | :--- |
 | **Probe_167** | 1450 |
+
+### 6. Downstream analysis
 
 
 
