@@ -51,7 +51,7 @@ A locate file (referenced in Output) that contains the location of the probe mot
 | VH00559...54550 | Probe_167 | TTGGCTA... | + | 1 | 17 | TTGGCTA... |
 
 ### 4. Enrichment Quantification
-After the mapping is complete, a custom Bash script processes the locate results to generate final counts. 
+After the mapping is complete, a custom Bash script processes the locate results to generate final counts (Referenced in Ouput). 
 
 To maximize specificity and account for the known architecture of the library, we only count motifs that align at the beginning of the read:
 
