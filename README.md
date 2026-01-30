@@ -3,8 +3,6 @@
 This repository contains the processing pipeline for DNA probe libraries enriched by hybridizing against a specific target. The workflow begins with raw FASTQ files and utilizes a mapping strategy, where the probe motifs are count. 
 
 
----
-
 ## Getting Started
 
 ### Prerequisites
