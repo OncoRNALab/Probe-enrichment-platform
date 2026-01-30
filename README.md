@@ -1,9 +1,7 @@
-# Probe Enrichment Platform (PEP) Analysis
+# Probe Enrichment Platform Analysis
 
-This repository contains the processing pipeline for DNA libraries enriched for *KRAS* and *BRAF* targets. The workflow begins with raw FASTQ files and utilizes a synthetic barcode mapping strategy to overcome sequencing challenges associated with low-diversity polyT tracts.
+This repository contains the processing pipeline for DNA probe libraries enriched by hybridizing against a specific target. The workflow begins with raw FASTQ files and utilizes a mapping strategy, where the probe motifs are count. 
 
-## Project Overview
-The core of this platform is a custom barcoding strategy. To prevent base-calling errors and registration failures caused by monochromatic polyT sequences on the Illumina NextSeq 2000, we replace low-diversity signals with high-diversity synthetic barcodes (Annex 4).
 
 ---
 
