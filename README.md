@@ -31,5 +31,5 @@ Probe motifs for *KRAS* and *BRAF* (referenced in Annex 2 and 3) are mapped dire
 `seqkit locate --pattern-file motifs.fa sample_R1.fastq.gz`
 
 ### 3. PolyT Barcode Mapping
-Unique barcode motifs are utilized for mapping to circumvent polyT (referenced in Annex 4 non-homogeneity:
+Unique barcode motifs are utilized for mapping to circumvent polyT (referenced in Annex 4) non-homogeneity:
 `seqkit locate --pattern-file barcodes.fa sample_R1.fastq.gz`
