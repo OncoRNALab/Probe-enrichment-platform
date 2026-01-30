@@ -1,12 +1,11 @@
 #!/bin/bash
 
 # Directory containing FASTQ files
-# Add example
-FASTQ_DIR=""
-OUTPUT_DIR="output/"
+FASTQ_DIR="Input/"
+OUTPUT_DIR="Output/"
 
 # File containing motifs/barcodes - for polyT, KRAS or BRAF
-# example/input/motif_probe_KRAS.fa
+# Examples
 MOTIF_FILE= "Motifs_Probe_KRAS.fa"
 MOTIF_FILE= "Motifs_Probe_BRAF.fa"
 MOTIF_FILE= "Barcodes.fa"
