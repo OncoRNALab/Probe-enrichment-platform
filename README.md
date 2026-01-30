@@ -18,6 +18,16 @@ The pipeline expects paired-end FASTQ files generated from an Illumina NextSeq 2
 | **PhiX Spike-in** | 15% |
 | **Demultiplexing** | Bcl2fastq v2.20 |
 
+
+### Computational Implementation (HPC)
+
+The analysis was performed on a **High-Performance Computing (HPC) environment** to leverage parallel processing of multiple FASTQ files. 
+
+* **Environment:** Linux-based HPC Cluster.
+* **Scripting:** Modular **Bash scripting** was used to automate the transition from raw FASTQ files to final probe counts.
+* **Job Scheduling:** (Optional: Add if you used Slurm/PBS, e.g., "Jobs were submitted via Slurm to handle batch processing.")
+* **Scalability:** The pipeline is designed to process multiple library pools simultaneously, significantly reducing the wall-clock time for large-scale enrichment experiments.
+
 ---
 
 ## Analysis Workflow
