@@ -67,7 +67,45 @@ PolyT Barcodes: Only matches within the 1 to 7 range are counted.
 | :--- | :--- |
 | **Probe_167** | 1450 |
 
+
 ### 6. Downstream analysis
+
+Each sample in the dataset has an associated **probe count file**.  
+These files contain raw sequencing counts. The metadata of each sample can be coupled to these counts to generate a complete, annotated dataset.
+
+A typical metadata file contains the following fields:
+
+- Probe_ID  
+- Salt concentration  
+- Temperature  
+- MT percentage  
+- WT percentage  
+- Probe sequence  
+- Position of the substitution  
+- Substitution type  
+- Mismatch position  
+- Highlight: the probe type  
+
+Example of the structure of a final combined dataset:
+
+| Probe_ID | Salt | Temp | MT | WT | Sequence | Substitution | Mismatch_pos | Raw_Count | Norm_MT | Norm_WT |
+|---------|------|------|----|----|------------------|-------------|-------------|-----------|---------|---------|
+| Probe_01 | 600 | 60°C | 100 | 0 | atcttgcctacgccaca | C→A | 17 | 515 | 0.507 | 2.780 |
+| Probe_01 | 600 | 60°C | 50 | 50 | atcttgcctacgccaca | C→A | 17 | 683 | 0.433 | 6.777 |
+| Probe_01 | 600 | 60°C | 25 | 75 | atcttgcctacgccaca | C→A | 17 | 396 | 0.377 |10.385 |
+
+Each row corresponds to a single measurement of a specific probe under a defined combination of laboratory conditions.
+
+The coupling of raw count files with their corresponding metadata can be performed using custom R scripts.
+
+As you can see, the normalized counts can also be calculated from the raw counts.  
+This normalization procedure is described in detail in the section **"Free-energy Penalty Calculation"** in the paper.
+
+Final datasets for the main experiments (**KRAS, BRAF, and PolyT**) are provided in the `output/` directory.
+
+
+
+
 
 
 
