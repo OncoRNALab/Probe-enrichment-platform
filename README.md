@@ -103,10 +103,20 @@ This normalization procedure is described in detail in the section **"Free-energ
 
 Final datasets for the main experiments (**KRAS, BRAF, and PolyT**) are provided in the `output/` directory.
 
+### 7. NN model
 
+The model determines the ΔG associated with the hybridization of a probe to a target sequence. It is built upon the foundational parameters from SantaLucia (2004) but introduces two empirical corrections.
 
+**Core Features**
 
+Nearest-Neighbor Calculation: Calculates energy based on base-stacking interactions between adjacent nucleotides rather than just individual base pairs.
 
+Mismatch (MM) Penalties: Identifies mismatches and calculates the thermodynamic "penalty" they impose on the duplex stability.
 
+**Advanced Empirical Adjustments**
 
+Edge Effects: Weights mismatch penalties based on their distance from the ends of the probe.
 
+MM Interaction: Models the cooperative "proximity effect" where two mismatches near each other can have a different impact than two isolated ones.
+
+Terminal Corrections: Adjustments for initiation energy and AT-rich terminal ends.
