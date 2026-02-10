@@ -105,6 +105,8 @@ Final datasets for the main experiments (**KRAS, BRAF, and PolyT**) are provided
 
 ### 7. NN model
 
+NN model/
+
 The model determines the ΔG associated with the hybridization of a probe to a target sequence. It is built upon the foundational parameters from SantaLucia (2004) but introduces two empirical corrections.
 
 **Core Features**
