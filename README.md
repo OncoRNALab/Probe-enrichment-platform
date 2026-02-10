@@ -115,7 +115,7 @@ Nearest-Neighbor Calculation: Calculates energy based on base-stacking interacti
 
 Mismatch (MM) Penalties: Identifies mismatches and calculates the thermodynamic "penalty" they impose on the duplex stability.
 
-**Advanced Empirical Adjustments**
+**Empirical Adjustments**
 
 Edge Effects: Weights mismatch penalties based on their distance from the ends of the probe.
 
