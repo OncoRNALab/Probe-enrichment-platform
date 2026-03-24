@@ -83,8 +83,9 @@ A typical metadata file contains the following fields:
 - Probe sequence  
 - Position of the substitution  
 - Substitution type  
-- Mismatch position  
-- Highlight: the probe type  
+- SNV position  
+- Probe type
+  
 
 Example of the structure of a final combined dataset:
 
